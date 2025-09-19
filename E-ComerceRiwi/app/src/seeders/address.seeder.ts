@@ -29,16 +29,24 @@ export const seedAddresses = async () => {
       const address: any = {};
       headers.forEach((header, index) => {
         const value = values[index];
-        if (header === "city_id" || header === "department_id" || header === "country_id" || header === "info_user_id") {
-          address[header] = parseInt(value);
+        let fieldName = header;
+        
+        // Fix column name mismatch: departament_id -> department_id
+        if (header === "departament_id") {
+          fieldName = "department_id";
+        }
+        
+        if (header === "city_id" || header === "departament_id" || header === "department_id" || header === "country_id" || header === "user_id") {
+          address[fieldName] = parseInt(value);
         } else {
-          address[header] = value;
+          address[fieldName] = value;
         }
       });
       return address;
     });
 
     for (const addressData of addresses) {
+      console.log("Creating address with data:", addressData);
       await addressDao.createAddress(addressData);
     }
     console.log("✅ Addresses seeded successfully");
