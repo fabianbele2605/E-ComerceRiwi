@@ -1,0 +1,10 @@
+name,is_active
+Credit Card,true
+Debit Card,true
+PSE,true
+Cash,true
+Bank Transfer,true
+Nequi,true
+Daviplata,true
+Baloto,false
+Gana,false

@@ -1,0 +1,3 @@
+role_id,username,password,is_active
+1,admin,admin123,true
+2,customer1,pass123,true
